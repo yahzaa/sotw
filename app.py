@@ -2,14 +2,21 @@ import os
 from flask import Flask
 from flask import render_template
 from flask import url_for
+from flask import request
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
-def root(signed_request, page):
-    return page
+def root():
+    if request.method == 'POST':
+        signed_request = request.args.get('signed_request', '')
+        page = request.args.get('page', '')
+        if signed_request:
+            return signed_request
+        return "no signed request"
+    return "Root"
 
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=True)
