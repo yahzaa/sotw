@@ -1,5 +1,6 @@
 import base64
 import os
+import json
 from flask import Flask
 from flask import render_template
 from flask import url_for
@@ -15,7 +16,7 @@ def root():
         page = request.form.get('page', '')
         if signed_request:
             data = parse_signed_request(signed_request)
-            return render_template('root.html', data=page)
+            return render_template('root.html', data=json.loads(page))
         return "no signed request"
     return "Root"
 
