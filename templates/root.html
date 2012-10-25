@@ -8,30 +8,14 @@
   <body>
     <div id="fb-root"></div>
     <script>
-      window.fbAsyncInit = function() {
-        // init the FB JS SDK
-        FB.init({
-          appId : 'app_id',
-          status: true,
-          cookie: true,
-          xfbml: true
-        });
-      };
-
-      // Load the SDK's source Asynchronously
-      (function(d) {
-        var js, id = 'facebook-jssdk', ref=d.getElementsByTagName('script')[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement('script');
-        js.id = id;
-        js.async = true;
-        js.src = "//connect.facebook.net/en_US/all.js";
-        ref.parentNode.insertBefore(js, ref);
-      } (document));
-
-      FB.api('/me', function(response) {
-        alert('Your name is ' + response.name);
-      });
+      (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=489902101031765";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
     </script>
+    <div class="fb-like" data-send="false" data-width="450" data-show-faces="false" data-font="lucida grande"></div>
   </body>
 </html>
