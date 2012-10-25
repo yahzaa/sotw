@@ -15,7 +15,7 @@ def root():
         page = request.form.get('page', '')
         if signed_request:
             data = parse_signed_request(signed_request)
-            return render_template('root.html', data=data)
+            return render_template('root.html', data=page)
         return "no signed request"
     return "Root"
 
