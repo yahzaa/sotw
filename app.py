@@ -15,10 +15,13 @@ def root():
         signed_request = request.form.get('signed_request', '')
         signed_request = parse_signed_request(signed_request)
         page = signed_request['page']
-        if page:
-            return render_template('root.html', data=page)
-        return "no page param"
-    return "Root"
+        submit = request.form.get('submit', '')
+        if submit and page['liked']:
+            return render_template('form.html')
+        if submit and not page['liked']:
+            return render_template('root.html', liked=False)
+        return render_template('root.html', liked=False)
+    return render_template('root.html')
 
 
 if __name__ == '__main__':

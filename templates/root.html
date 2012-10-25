@@ -4,7 +4,12 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <h1>Signed request details</h1>
-    {{ data['liked'] }}
+    <h1>Enter Fan of The Week Contest</h1>
+    {% if not liked %}
+      <h2>Please like this app to enter</h2>
+    {% endif %}
+    <form action="" method="post">
+      <input type="submit" value="Enter" name="submit"/>
+    </form>
   </body>
 </html>
