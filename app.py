@@ -6,8 +6,8 @@ from flask import url_for
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
-def root():
-    return "root"
+def root(signed_request, page):
+    return page
 
 
 if __name__ == '__main__':
