@@ -13,9 +13,10 @@ app = Flask(__name__)
 def root():
     if request.method == 'POST':
         signed_request = request.form.get('signed_request', '')
-        page = request.form.get('page', '')
+        signed_request = parse_signed_request(signed_request)
+        page = signed_request['page']
         if page:
-            return render_template('root.html')
+            return render_template('root.html', data=page)
         return "no page param"
     return "Root"
 
