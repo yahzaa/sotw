@@ -3,9 +3,13 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/')
-def hello():
+@app.route('/', methods=['GET', 'POST'])
+def root():
     return 'Hello World!'
+
+@app.route('/hello')
+def hello():
+    return 'Hello'
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
