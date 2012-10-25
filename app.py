@@ -13,7 +13,10 @@ app = Flask(__name__)
 def root():
     if request.method == 'POST':
         signed_request = request.form.get('signed_request', '')
-        signed_request = parse_signed_request(signed_request)
+        if signed_request:
+            signed_request = parse_signed_request(signed_request)
+        else:
+            return "signed request not available"
         page = signed_request['page']
         submit = request.form.get('submit', '')
         if submit and page['liked']:
