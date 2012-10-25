@@ -9,8 +9,8 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def root():
     if request.method == 'POST':
-        signed_request = request.args.get('signed_request', '')
-        page = request.args.get('page', '')
+        signed_request = request.form.get('signed_request', '')
+        page = request.form.get('page', '')
         if signed_request:
             return signed_request
         return "no signed request"
