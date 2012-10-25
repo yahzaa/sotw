@@ -16,8 +16,7 @@ def root():
         signed_request = request.form.get('signed_request', '')
         page = request.form.get('page', '')
         if signed_request:
-            data = base64_url_decode(signed_request)
-            return data
+            return signed_request
         return "no signed request"
     return "Root"
 
