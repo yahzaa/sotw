@@ -15,17 +15,16 @@ def root():
         signed_request = request.form.get('signed_request', '')
         if signed_request:
             signed_request = parse_signed_request(signed_request)
+            liked = signed_request['page']['liked']
         else:
-            return "signed request not available"
-        page = signed_request['page']
+            liked = False
         submit = request.form.get('submit', '')
-        if submit and page['liked']:
+        if submit and liked:
             return render_template('form.html')
-        if submit and not page['liked']:
-            return render_template('root.html', liked=False)
-        return render_template('root.html', liked=False)
-    return render_template('root.html')
-
+        if submit and not liked:
+            return render_template('root.html', data=dict(liked=False, first_visit=False))
+        return render_template('root.html', data=dict(liked=False, first_visit=True))
+    return render_template('root.html', data=dict(liked=False, first_visit=True))
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

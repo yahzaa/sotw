@@ -5,7 +5,7 @@
   </head>
   <body>
     <h1>Enter Fan of The Week Contest</h1>
-    {% if not liked %}
+    {% if not data['liked'] and not data['first_visit'] %}
       <h2>Please like this app to enter</h2>
     {% endif %}
     <form action="" method="post">
