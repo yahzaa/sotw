@@ -5,8 +5,8 @@ from flask import render_template
 from flask import url_for
 from flask import request
 
-def base64_url_encode(data):
-    return base64.urlsafe_b64encode(data).rstrip('=')
+def base64_url_decode(data):
+    return base64.urlsafe_b64decode(data)
 
 app = Flask(__name__)
 
