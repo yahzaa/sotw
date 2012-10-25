@@ -14,10 +14,9 @@ def root():
     if request.method == 'POST':
         signed_request = request.form.get('signed_request', '')
         page = request.form.get('page', '')
-        if signed_request:
-            data = parse_signed_request(signed_request)
-            return render_template('root.html', data=json.loads(page))
-        return "no signed request"
+        if page:
+            return render_template('root.html')
+        return "no page param"
     return "Root"
 
 
