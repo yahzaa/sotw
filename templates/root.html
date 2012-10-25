@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" src="{{ styles_url }}">
+    <script type="text/javascript" src="/static/jquery.js"></script>
+  </head>
+  <body>
+    <div id="fb-root"></div>
+    <script>
+      window.fbAsyncInit = function() {
+        // init the FB JS SDK
+        FB.init({
+          appId : 'app_id',
+          status: true,
+          cookie: true,
+          xfbml: true
+        });
+      };
+
+      // Load the SDK's source Asynchronously
+      (function(d) {
+        var js, id = 'facebook-jssdk', ref=d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement('script');
+        js.id = id;
+        js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+      } (document));
+
+      FB.api('/me', function(response) {
+        alert('Your name is ' + response.name);
+      });
+    </script>
+  </body>
+</html>
