@@ -1,8 +1,12 @@
+import base64
 import os
 from flask import Flask
 from flask import render_template
 from flask import url_for
 from flask import request
+
+def base64_url_encode(data):
+    return base64.urlsafe_b64encode(data).rstrip('=')
 
 app = Flask(__name__)
 
@@ -12,7 +16,8 @@ def root():
         signed_request = request.form.get('signed_request', '')
         page = request.form.get('page', '')
         if signed_request:
-            return signed_request
+            data = base64_url_encode(signed_request)
+            return data
         return "no signed request"
     return "Root"
 
