@@ -11,20 +11,19 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
-    if request.method == 'POST':
-        signed_request = request.form.get('signed_request', '')
-        if signed_request:
-            signed_request = parse_signed_request(signed_request)
-            liked = signed_request['page']['liked']
-        else:
-            liked = False
+    signed_request = request.form.get('signed_request', '')
+    if signed_request:
+        signed_request = parse_signed_request(signed_request)
+        liked = signed_request['page']['liked']
+    else:
+        liked = False
+    if request.method == 'POST' and request.form.get('submit', ''):
         submit = request.form.get('submit', '')
         if submit and liked:
             return render_template('form.html')
         if submit and not liked:
-            return render_template('root.html', data=dict(liked=False, first_visit=False))
-        return render_template('root.html', data=dict(liked=False, first_visit=True))
-    return render_template('root.html', data=dict(liked=False, first_visit=True))
+            return render_template('root.html', data=dict(liked=liked, first_visit=False))
+    return render_template('root.html', data=dict(liked=liked, first_visit=True))
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
