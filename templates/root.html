@@ -5,8 +5,8 @@
   </head>
   <body>
     <h1>Signed request details</h1>
-    {% for (k,v) in data %}
-      {{ k }} = {{ v }}
+    {% for k in data %}
+      <p>{{ k }} = {{ data[k] }}</p>
     {% endfor %}
   </body>
 </html>
