@@ -7,9 +7,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
-    styles_url = url_for('static', filename='style.css')
-    channel_url = url_for('static', filename='channel.html')
-    return render_template('root.html', styles_url=styles_url)
+    return "root"
 
 
 if __name__ == '__main__':
