@@ -4,12 +4,14 @@ from flask import render_template
 from flask import url_for
 from flask import request
 from flask import session
+from werkzeug import secure_filename
 from helpers import parse_signed_request
 from helpers import allowed_file
 from helpers import RegistrationSchema
 from formencode import Invalid
 
 app = Flask(__name__)
+app.config['UPLOAD_FOLDER'] = "uploads"
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
@@ -45,13 +47,14 @@ def enter():
                 cstruct = schema.to_python(appstruct)
             except Invalid, e:
                 return render_template('form.html', errors=e.error_dict)
-            '''user = User(form.first_name.data, form.last_name.data,
-                        form.email.data, form.phone.data,
-                        form.location.data, image_name)
-            db_session.add(user)
-            flash('Thanks for registering')'''
-            return "Thanks for registering"
-        return render_template('form.html', errors=errors)
+            file = request.files.get('image', '')
+            if not file:
+                e = dict(image='please select an image')
+                return render_template('form.html', errors=e)
+            if file and allowed_file(file.filename):
+                filename = secure_filename(file.filename)
+                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+                return "Thanks for registering"
     else:
         return "You are not a Fan"
 
