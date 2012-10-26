@@ -4,7 +4,8 @@ from flask import render_template
 from flask import url_for
 from flask import request
 from flask import session
-from decode_signed_request import parse_signed_request
+from helpers import parse_signed_request
+from helpers import allowed_file
 
 app = Flask(__name__)
 
@@ -21,9 +22,20 @@ def root():
 
 @app.route('/enter', methods=['GET', 'POST'])
 def enter():
+    errors = {}
     likes = session.get('likes', None)
     if likes:
-        return render_template('form.html')
+        form = RegistrationForm(request.form)
+        if request.method == 'GET':
+            return render_template('form.html', errors=errors)
+        if request.method == 'POST' and form.validate():
+            '''user = User(form.first_name.data, form.last_name.data,
+                        form.email.data, form.phone.data,
+                        form.location.data, image_name)
+            db_session.add(user)
+            flash('Thanks for registering')'''
+            return "Thanks for registering"
+        return render_template('form.html', form=form)
     else:
         return "You are not a Fan"
 
