@@ -55,6 +55,10 @@ def enter():
                 filename = secure_filename(file.filename)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
                 return "Thanks for registering"
+            if not file:
+                return "no file"
+            if not allowed_file(file.filename):
+                return "filename not allowed"
     else:
         return "You are not a Fan"
 
