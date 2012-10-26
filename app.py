@@ -25,9 +25,12 @@ from flask.ext.sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 app.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
+
+# DB Settings
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 
+#user model
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     first_name = db.Column(db.String(80))
@@ -37,7 +40,7 @@ class User(db.Model):
     phone = db.Column(db.Integer, unique=True)
     image = db.Column(db.String(200), unique=True)
 
-
+# uploads
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 
@@ -50,7 +53,9 @@ def root():
     else:
         likes = False
     session['likes'] = likes
-    return render_template('root.html')
+    css_url = url_for('static', filename='style.css')
+    bg_url = url_for('static', filename='bg.gif')
+    return render_template('root.html', bg=bg_url)
 
 @app.route('/enter', methods=['GET', 'POST'])
 def enter():
