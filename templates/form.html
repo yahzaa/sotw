@@ -4,7 +4,7 @@
     <meta charset="utf-8">
   </head>
   <body>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
       <p>
         <label for="first_name">First Name</label>
         <input type="text" id="first_name" name="first_name" />
@@ -14,9 +14,31 @@
         <input type="text" id="last_name" name="last_name" />
       </p>
       <p>
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" />
+      </p>
+      <p>
         <label for="email">Email</label>
         <input type="text" id="email" name="email" />
       </p>
+      <p>
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" name="phone" />
+      </p>
+      <p>
+        <label for="image">Select an image on your computer</label>
+        <input type="file" id="img" name="img" />
+      </p>
+      <p>
+        <input type="checkbox" id="tnc" name="tnc" />
+        <label for="tnc">I am 18 or older and have read and agree to the<br>
+          <a href="#">terms and conditions</a> for my photo submission.</label>
+      </p>
+      <p>
+        <input type="submit" id="submit" name="submit" value="SUBMIT NOW" />
+      </p>
+      <p><a href="#">Privacy Policy</a></p>
+      <hr />
       
     </form>
   </body>
