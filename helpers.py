@@ -26,14 +26,14 @@ def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
-## Submit form schema and validations
-from wtforms import Form, BooleanField, TextField, FileField, IntegerField, validators
+##  form schema and validations
+import formencode
+from formencode import validators 
 
-class RegistrationForm(Form):
-    first_name = TextField('First Name', [validators.required(), validators.Length(min=4, max=50)])
-    last_name = TextField('Last Name', [validators.optional(), validators.Length(min=4, max=50)])
-    email = TextField('Email', [validators.required(), validators.Length(min=6, max=50)])
-    location = TextField('Location', [validators.required(), validators.Length(min=2, max=50)])
-    phone = IntegerField('Phone', [validators.required(), validators.Length(min=10, max=10)])
-    image = FileField('Select an image', [validators.required()])
-    accept_tnc = BooleanField('I accept the Terms and Conditions', [validators.required()])
+class RegistrationSchema(formencode.Schema):
+    first_name = validators.String(not_empty=True)
+    last_name = validators.String()
+    email = validators.Email(resolve_domain=True)
+    location = validators.String(not_empty=True)
+    phone = validators.Int(not_empty=True)
+    image = validators.FieldStorageUploadConverter(not_empty=True)

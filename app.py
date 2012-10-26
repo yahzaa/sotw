@@ -6,7 +6,7 @@ from flask import request
 from flask import session
 from helpers import parse_signed_request
 from helpers import allowed_file
-from helpers import RegistrationForm
+from helpers import RegistrationSchema
 
 app = Flask(__name__)
 
@@ -26,17 +26,17 @@ def enter():
     errors = {}
     likes = session.get('likes', None)
     if likes:
-        form = RegistrationForm(request.form)
         if request.method == 'GET':
             return render_template('form.html', errors=errors)
-        if request.method == 'POST' and form.validate():
+        if request.method == 'POST':
+            #validate form data
             '''user = User(form.first_name.data, form.last_name.data,
                         form.email.data, form.phone.data,
                         form.location.data, image_name)
             db_session.add(user)
             flash('Thanks for registering')'''
             return "Thanks for registering"
-        return render_template('form.html', form=form)
+        return render_template('form.html', errors=errors)
     else:
         return "You are not a Fan"
 
