@@ -34,14 +34,14 @@
         <label for="tnc">I am 18 or older and have read and agree to the<br>
           <a href="#">terms and conditions</a> for my photo submission.</label>
       </p>
+    </form>
       <p>
         <input type="submit" id="submit" name="submit" value="SUBMIT NOW" />
       </p>
       <p><a href="#">Privacy Policy</a></p>
       <hr />
       {% for k in errors.keys() %}
-        <p>{{ errors['k'] }}</p>
+        <p>{{ errors['k'].msg }}</p>
       {% endfor %}
-    </form>
   </body>
 </html>
