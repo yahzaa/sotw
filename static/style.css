@@ -1,17 +1,19 @@
 body {
     font-family: "Open Sans";
     background: url('/static/bg.gif') no-repeat;
-    margin-left: 5%;
+    margin-left: 40px;
+    color: #2d3192;
 }
 
 #header {
     font-weight: 300;
-    font-size: 28px;
+    font-size: 36px;
 }
 
 #semibold-para {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 18px;
+    margin-bottom: 20px;
 }
 
 #how-works {
@@ -21,11 +23,27 @@ body {
 
 .steps {
     font-weight: 300;
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 0;
     margin-top: 0;
 }
 
 #submit-btn {
-    font-size: 20px;
+    background: url('/static/spr01.png') no-repeat 0 0;
+    width: 296px;
+    height: 73px;
+    padding:0px 0 4px 0;
+    border:none;
+    text-indent: -1000em;
+    cursor: pointer;
+}
+
+#submit-btn:hover {
+    background: url('/static/spr01.png') no-repeat -300px 0;
+    width: 296px;
+    height: 73px;
+    padding:0px 0 4px 0;
+    border:none;
+    text-indent: -1000em;
+    cursor: pointer;
 }

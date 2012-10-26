@@ -9,15 +9,16 @@
   <body background="{{ data['bg'] }}">
     <p id="header">Are you awesome enough?</p>
     <p id="semibold-para">Paytm is looking for,<br>facebook fan of the week.</p>
-    <br><br><br><br>
+    <br><br>
     <p id="how-works">How does it work?</p>
     <p class="steps">1. Submit your awesome pic.</p>
     <p class="steps">2. Share a little piece of info<br>&nbsp;&nbsp;&nbsp;&nbsp;about yourself</p>
     <p class="steps">3. Share the magic!</p>
     <br>
     <form action="/enter" method="post">
-      <input type="submit" value="Submit Now" name="submit" id="submit-btn"/>
+      <input type="submit" name="submit" id="submit-btn"/>
     </form>
+
     {% if not data['likes'] %}
     <script>
       $("#submit-btn").click(function(e){
@@ -26,5 +27,6 @@
       });
     </script>
     {% endif %}
+
   </body>
 </html>
