@@ -41,7 +41,7 @@
       <p><a href="#">Privacy Policy</a></p>
       <hr />
       {% for k in errors.keys() %}
-        <p>{{ errors['k'].msg }}</p>
+        <p>{{ errors[k].msg }}</p>
       {% endfor %}
   </body>
 </html>
