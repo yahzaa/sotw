@@ -11,7 +11,7 @@ from helpers import RegistrationSchema
 from formencode import Invalid
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = os.path.join(os.path.dirname(__file__), "/uploads")
+app.config['UPLOAD_FOLDER'] = './uploads'
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
