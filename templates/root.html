@@ -3,9 +3,10 @@
   <head>
     <meta charset="utf-8">
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="{{ static_urls['css'] }}" />
+    <link rel="stylesheet" type="text/css" href="{{ data['css'] }}" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
   </head>
-  <body background="{{ static_urls['bg'] }}">
+  <body background="{{ data['bg'] }}">
     <p id="header">Are you awesome enough?</p>
     <p id="semibold-para">Paytm is looking for,<br>facebook fan of the week.</p>
     <br><br><br><br>
@@ -17,5 +18,13 @@
     <form action="/enter" method="post">
       <input type="submit" value="Submit Now" name="submit" id="submit-btn"/>
     </form>
+    {% if not data['likes'] %}
+    <script>
+      $("#submit-btn").click(function(e){
+        e.preventDefault();
+        alert("You are not a Fan!");
+      });
+    </script>
+    {% endif %}
   </body>
 </html>
