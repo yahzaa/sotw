@@ -23,7 +23,7 @@ def root():
 def enter():
     likes = session.get('likes', None)
     if likes:
-        return "You like this page"
+        return render_template('form.html')
     else:
         return "You are not a Fan"
 
