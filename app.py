@@ -19,9 +19,24 @@ from flaskext.uploads import (
     IMAGES,
     UploadNotAllowed,
     )
+from flask import Flask
+from flask.ext.sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
 app.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+db = SQLAlchemy(app)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(80))
+    last_name = db.Column(db.String(80))
+    email = db.Column(db.String(120), unique=True)
+    location = db.Column(db.String(80))
+    phone = db.Column(db.Integer, unique=True)
+    image = db.Column(db.String(200), unique=True)
+
 
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
@@ -68,6 +83,19 @@ def enter():
                 filename = photos.save(file)
             except UploadNotAllowed:
                 return "The upload was not allowed"
+            user = User(
+                first_name = cstruct['first_name'],
+                last_name = cstruct['last_name'],
+                email = cstruct['email'],
+                phone = cstruct['phone'],
+                location = cstruct['location'],
+                image = filename,
+                )
+            db.session.add(user)
+            try:
+                db.session.commit()
+            except:
+                return "AN error occurred while saving data"
             return "Success, go back to whatever the hell you were doing."
     else:
         return "You are not a Fan"

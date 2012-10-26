@@ -6,3 +6,4 @@ wsgiref==0.1.2
 formencode
 pyDNS
 Flask-uploads
+Flask-sqlalchemy
