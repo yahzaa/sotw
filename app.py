@@ -9,14 +9,12 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
-    liked = False
-    if request.method == 'POST':
-        signed_request = request.form.get('signed_request', '')
-        if signed_request:
-            signed_request = parse_signed_request(signed_request)
-            liked = signed_request['page']['liked']
-        else:
-            liked = False
+    signed_request = request.form.get('signed_request', '')
+    if signed_request:
+        signed_request = parse_signed_request(signed_request)
+        liked = signed_request['page']['liked']
+    else:
+        liked = False
     if request.method == 'POST' and request.form.get('submit', ''):
         if liked:
             return render_template('form.html')
