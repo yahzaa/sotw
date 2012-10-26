@@ -82,7 +82,7 @@ textarea {
     cursor: pointer;
 }
 
-.lean_overlay {
+#lean_overlay {
     display: none;
     z-index: 10000;
     background-color: #fff;
@@ -95,20 +95,20 @@ textarea {
     -webkit-box-shadow: 0 0 10px blue;
 }
 
-.lean_overlay .overlay-header {
+#lean_overlay #overlay-header {
     font-size: 36px;
     font-weight: 300;
     text-align: center;
     margin-top: 10px;
 }
 
-.lean_overlay .overlay-text {
+#lean_overlay #overlay-text {
     font-size: 20px;
     font-weight: 600;
     text-align: center;
     margin-top: 5px;
 }
 
-.lean_overlay #fblike {
+#lean_overlay #fblike {
     margin-left: 50px;
 }

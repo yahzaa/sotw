@@ -33,12 +33,12 @@
     <script>
       $("#submit-btn").click(function(e){
         e.preventDefault();
-        $(".lean_overlay").modal();
+        $("#lean_overlay").modal();
       });
     </script>
-    <div class="lean_overlay">
-      <p class="overlay-header">Haven't liked us yet?</p>
-      <p class="overlay-text">To be our start of the week, you have to
+    <div id="lean_overlay">
+      <p id="overlay-header">Haven't liked us yet?</p>
+      <p id="overlay-text">To be our start of the week, you have to
         click the like. Click it now and take the first step towards
         your stardom.
       </p>
