@@ -61,3 +61,23 @@ textarea {
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
 }
+
+#submit_form {
+    background: url('/static/spr01.png') no-repeat 0 -80px;
+    width: 296px;
+    height: 73px;
+    padding:0px 0 4px 0;
+    border:none;
+    text-indent: -1000em;
+    cursor: pointer;
+}
+
+#submit_form:hover {
+    background: url('/static/spr01.png') no-repeat -300px -80px;
+    width: 296px;
+    height: 73px;
+    padding:0px 0 4px 0;
+    border:none;
+    text-indent: -1000em;
+    cursor: pointer;
+}
