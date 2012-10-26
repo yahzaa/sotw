@@ -7,4 +7,3 @@ formencode
 pyDNS
 Flask-uploads
 Flask-sqlalchemy
-pysqlite
