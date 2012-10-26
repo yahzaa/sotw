@@ -1,6 +1,4 @@
-import base64
 import os
-import json
 from flask import Flask
 from flask import render_template
 from flask import url_for
@@ -11,17 +9,18 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
-    signed_request = request.form.get('signed_request', '')
-    if signed_request:
-        signed_request = parse_signed_request(signed_request)
-        liked = signed_request['page']['liked']
-    else:
-        liked = False
+    liked = False
+    if request.method == 'POST':
+        signed_request = request.form.get('signed_request', '')
+        if signed_request:
+            signed_request = parse_signed_request(signed_request)
+            liked = signed_request['page']['liked']
+        else:
+            liked = False
     if request.method == 'POST' and request.form.get('submit', ''):
-        submit = request.form.get('submit', '')
-        if submit and liked:
+        if liked:
             return render_template('form.html')
-        if submit and not liked:
+        if not liked:
             return render_template('root.html', data=dict(liked=liked, first_visit=False))
     return render_template('root.html', data=dict(liked=liked, first_visit=True))
 
