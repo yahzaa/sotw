@@ -1,3 +1,31 @@
 body {
+    font-family: "Open Sans";
     background: url('/static/bg.gif') no-repeat;
+    margin-left: 5%;
+}
+
+#header {
+    font-weight: 300;
+    font-size: 28px;
+}
+
+#semibold-para {
+    font-weight: 700;
+    font-size: 18px;
+}
+
+#how-works {
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.steps {
+    font-weight: 300;
+    font-size: 18px;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#submit-btn {
+    font-size: 20px;
 }
