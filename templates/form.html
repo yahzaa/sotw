@@ -39,7 +39,9 @@
       </p>
       <p><a href="#">Privacy Policy</a></p>
       <hr />
-      
+      {% for k in errors.keys() %}
+        <p>{{ errors['k'] }}</p>
+      {% endfor %}
     </form>
   </body>
 </html>
