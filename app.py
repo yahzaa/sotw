@@ -55,7 +55,7 @@ def root():
     session['likes'] = likes
     css_url = url_for('static', filename='style.css')
     bg_url = url_for('static', filename='bg.gif')
-    return render_template('root.html', static_urls=dict(bg=bg_url, css=css_url)
+    return render_template('root.html', static_urls=dict(bg=bg_url, css=css_url))
 
 @app.route('/enter', methods=['GET', 'POST'])
 def enter():
