@@ -21,9 +21,10 @@ from flaskext.uploads import (
     )
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = './uploads'
+app.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
 
 photos = UploadSet('photos', IMAGES)
+configure_uploads(app, photos)
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
@@ -63,15 +64,11 @@ def enter():
             if not file:
                 e = dict(image='please select an image')
                 return render_template('form.html', errors=e)
-            if file:
+            try:
                 filename = photos.save(file)
-                rec = Photo(filename=filename)
-                rec.store()
-                return "Thanks for registering"
-            if not file:
-                return "no file"
-            if not allowed_file(file.filename):
-                return "filename not allowed"
+            except UploadNotAllowed:
+                return "The upload was not allowed"
+            return "Success, go back to whatever the hell you were doing."
     else:
         return "You are not a Fan"
 
