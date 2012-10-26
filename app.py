@@ -6,6 +6,7 @@ from flask import request
 from flask import session
 from helpers import parse_signed_request
 from helpers import allowed_file
+from helpers import RegistrationForm
 
 app = Flask(__name__)
 
