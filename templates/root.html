@@ -5,6 +5,8 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{ data['css'] }}" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css" />
   </head>
   <body background="{{ data['bg'] }}">
     <p id="header">Are you awesome enough?</p>
@@ -19,11 +21,23 @@
       <input type="submit" name="submit" id="submit-btn"/>
     </form>
 
+    <!--
+    <div class="modal hide fade">
+      <div class="modal hide fade">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h3>Not a FAN!</h3>
+        </div>
+        <div class="modal-body">
+          <p>One fine body</p>
+        </div>
+      </div>
+      -->
     {% if not data['likes'] %}
     <script>
       $("#submit-btn").click(function(e){
-        e.preventDefault();
-        alert("You are not a Fan!");
+        e.prevenDefault();
+        alert("You are not a fan!");
       });
     </script>
     {% endif %}

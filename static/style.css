@@ -47,3 +47,17 @@ body {
     text-indent: -1000em;
     cursor: pointer;
 }
+
+input {
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+textarea {
+    border: none;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+}

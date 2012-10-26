@@ -2,46 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/static/style.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
   </head>
-  <body>
+  <body style="font-size:14px;">
     <form action="" method="post" enctype="multipart/form-data">
       <p>
-        <label for="first_name">First Name</label>
-        <input type="text" id="first_name" name="first_name" />
+        <label for="first_name">Name</label>
+        <input type="text" id="first_name" name="first_name" style="margin-left:62px;"/>
         {% if errors and 'first_name' in errors.keys() %}
           <span class="error">{{ errors['first_name'] }} </span>
         {% endif %}
       </p>
       <p>
-        <label for="last_name">Last Name</label>
-        <input type="text" id="last_name" name="last_name" />
-        {% if errors and 'last_name' in errors.keys() %}
-          <span class="error">{{ errors['last_name'] }} </span>
-        {% endif %}
-      </p>
-      <p>
-        <label for="location">Location</label>
-        <input type="text" id="location" name="location" />
-        {% if errors and 'location' in errors.keys() %}
-          <span class="error">{{ errors['location'] }} </span>
-        {% endif %}
-      </p>
-      <p>
         <label for="email">Email</label>
-        <input type="text" id="email" name="email" />
+        <input type="text" id="email" name="email" style="margin-left:67px;"/>
         {% if errors and 'email' in errors.keys() %}
           <span class="error">{{ errors['email'] }} </span>
         {% endif %}
       </p>
       <p>
-        <label for="phone">Phone Number</label>
+        <label for="phone">Mobile Number</label>
         <input type="text" id="phone" name="phone" />
         {% if errors and 'phone' in errors.keys() %}
           <span class="error">{{ errors['phone'] }} </span>
         {% endif %}
       </p>
       <p>
-        <label for="image">Select an image on your computer</label>
+        <label for="desc">I should be 'Star of The Week' because:</label><br/>
+        <textarea rows="4" cols="30" id="desc" name="desc"></textarea>
+        {% if errors and 'desc' in errors.keys() %}
+          <span class="error">{{ errors['desc'] }}</span>
+        {% endif %}
+      </p>
+      <p>
+        <label for="image">Select an image on your computer</label><br />
         <input type="file" id="image" name="image" />
         {% if errors and 'image' in errors.keys() %}
           <span class="error">{{ errors['image'] }} </span>
@@ -60,6 +55,6 @@
       </p>
     </form>
       <p><a href="#">Privacy Policy</a></p>
-      <hr />
+      
   </body>
 </html>

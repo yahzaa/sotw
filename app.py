@@ -51,8 +51,8 @@ def root():
         decoded_request = parse_signed_request(signed_request)
         likes = decoded_request['page']['liked']
     else:
-        likes = False
-    session['likes'] = likes
+        likes = False # should be False doing it for local dev
+    session['likes'] = True
     css_url = url_for('static', filename='style.css')
     bg_url = url_for('static', filename='bg.gif')
     return render_template('root.html', data=dict(bg=bg_url, css=css_url, likes=likes))
