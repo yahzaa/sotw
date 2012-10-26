@@ -81,3 +81,34 @@ textarea {
     text-indent: -1000em;
     cursor: pointer;
 }
+
+#lean_overlay {
+    display: none;
+    z-index: 10000;
+    background-color: #fff;
+    width: 450px;
+    height: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid blue;
+    -moz-box-shadow: 0 0 10px 5px blue;
+    -webkit-box-shadow: 0 0 10px blue;
+}
+
+#lean_overlay #overlay-header {
+    font-size: 36px;
+    font-weight: 300;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#lean_overlay #overlay-text {
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#lean_overlay #fblike {
+    margin-left: 50px;
+}

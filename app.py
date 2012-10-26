@@ -52,7 +52,7 @@ def root():
         likes = decoded_request['page']['liked']
     else:
         likes = False # should be False doing it for local dev
-    session['likes'] = True
+    session['likes'] = likes
     css_url = url_for('static', filename='style.css')
     bg_url = url_for('static', filename='bg.gif')
     return render_template('root.html', data=dict(bg=bg_url, css=css_url, likes=likes))
@@ -103,7 +103,7 @@ def enter():
                 return "AN error occurred while saving data"
             return "Success, go back to whatever the hell you were doing."
     else:
-        return "You are not a Fan"
+        return "You are not a Fan!"
 
 app.secret_key = 'seecreet'
 

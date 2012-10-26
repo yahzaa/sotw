@@ -5,10 +5,18 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="{{ data['css'] }}" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="assets/bootstrap.min.css" />
+    <script src="/static/jquery.simplemodal.1.4.3.min.js"></script>
   </head>
   <body background="{{ data['bg'] }}">
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+      fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
     <p id="header">Are you awesome enough?</p>
     <p id="semibold-para">Paytm is looking for,<br>facebook fan of the week.</p>
     <br><br>
@@ -18,28 +26,25 @@
     <p class="steps">3. Share the magic!</p>
     <br>
     <form action="/enter" method="post">
-      <input type="submit" name="submit" id="submit-btn"/>
+      <input type="submit" name="submit" id="submit-btn" />
     </form>
 
-    <!--
-    <div class="modal hide fade">
-      <div class="modal hide fade">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h3>Not a FAN!</h3>
-        </div>
-        <div class="modal-body">
-          <p>One fine body</p>
-        </div>
-      </div>
-      -->
+    
     {% if not data['likes'] %}
     <script>
       $("#submit-btn").click(function(e){
-        e.prevenDefault();
-        alert("You are not a fan!");
+        e.preventDefault();
+        $("#lean_overlay").modal();
       });
     </script>
+    <div id="lean_overlay">
+      <p id="overlay-header">Haven't liked us yet?</p>
+      <p id="overlay-text">To be our start of the week, you have to
+        click the like. Click it now and take the first step towards
+        your stardom.
+      </p>
+      <div class="fb-like" id="fblike" data-send="false" data-width="300" data-show-faces="false"></div>
+    </div>
     {% endif %}
 
   </body>
