@@ -30,6 +30,20 @@ def enter():
             return render_template('form.html', errors=errors)
         if request.method == 'POST' and request.form.get('submit', ''):
             #validate form data
+            schema = RegistrationSchema()
+            appstruct = dict(
+                first_name = request.form.get('first_name', ''),
+                last_name = request.form.get('last_name', ''),
+                email = request.form.get('email', ''),
+                phone = request.form.get('phone', ''),
+                location = request.form.get('location', ''),
+                tnc = request.form.get('tnc', ''),
+                image = request.form.get('image', ''),
+                )
+            try:
+                cstruct = schema.to_python(appstruct)
+            except Invalid, e:
+                return render_template('form.html', errors=e)
             '''user = User(form.first_name.data, form.last_name.data,
                         form.email.data, form.phone.data,
                         form.location.data, image_name)
