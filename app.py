@@ -1,17 +1,29 @@
 import os
-from flask import Flask
-from flask import render_template
-from flask import url_for
-from flask import request
-from flask import session
+from flask import (
+    Flask,
+    render_template,
+    url_for,
+    request,
+    session,
+    )
 from werkzeug import secure_filename
-from helpers import parse_signed_request
-from helpers import allowed_file
-from helpers import RegistrationSchema
+from helpers import (
+    parse_signed_request,
+    allowed_file,
+    RegistrationSchema,
+    )
 from formencode import Invalid
+from flaskext.uploads import (
+    UploadSet,
+    configure_uploads,
+    IMAGES,
+    UploadNotAllowed,
+    )
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = './uploads'
+
+photos = UploadSet('photos', IMAGES)
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
@@ -51,9 +63,10 @@ def enter():
             if not file:
                 e = dict(image='please select an image')
                 return render_template('form.html', errors=e)
-            if file and allowed_file(file.filename):
-                filename = secure_filename(file.filename)
-                file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            if file:
+                filename = photos.save(file)
+                rec = Photo(filename=filename)
+                rec.store()
                 return "Thanks for registering"
             if not file:
                 return "no file"
