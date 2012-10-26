@@ -44,7 +44,7 @@ def enter():
             try:
                 cstruct = schema.to_python(appstruct)
             except Invalid, e:
-                return render_template('form.html', errors=e)
+                return render_template('form.html', errors=e.error_dict)
             '''user = User(form.first_name.data, form.last_name.data,
                         form.email.data, form.phone.data,
                         form.location.data, image_name)
