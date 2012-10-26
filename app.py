@@ -7,6 +7,7 @@ from flask import session
 from helpers import parse_signed_request
 from helpers import allowed_file
 from helpers import RegistrationSchema
+from formencode import Invalid
 
 app = Flask(__name__)
 
