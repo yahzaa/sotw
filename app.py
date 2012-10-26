@@ -26,9 +26,9 @@ def enter():
     errors = {}
     likes = session.get('likes', None)
     if likes:
-        if request.method == 'GET':
+        if request.method in ('GET', 'POST'):
             return render_template('form.html', errors=errors)
-        if request.method == 'POST':
+        if request.method == 'POST' and request.form.get('submit', ''):
             #validate form data
             '''user = User(form.first_name.data, form.last_name.data,
                         form.email.data, form.phone.data,
