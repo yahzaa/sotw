@@ -27,9 +27,9 @@ def enter():
     errors = {}
     likes = session.get('likes', None)
     if likes:
-        if request.method in ('GET', 'POST') and not request.form.get('submit', ''):
+        if request.method in ('GET', 'POST') and not request.form.get('submit_form', ''):
             return render_template('form.html', errors=errors)
-        if request.method == 'POST' and request.form.get('submit', ''):
+        if request.method == 'POST' and request.form.get('submit_form', ''):
             #validate form data
             schema = RegistrationSchema()
             appstruct = dict(

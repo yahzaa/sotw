@@ -15,36 +15,51 @@
       <p>
         <label for="last_name">Last Name</label>
         <input type="text" id="last_name" name="last_name" />
+        {% if errors and 'last_name' in errors.keys() %}
+          <span class="error">{{ errors['last_name'] }} </span>
+        {% endif %}
       </p>
       <p>
         <label for="location">Location</label>
         <input type="text" id="location" name="location" />
+        {% if errors and 'location' in errors.keys() %}
+          <span class="error">{{ errors['location'] }} </span>
+        {% endif %}
       </p>
       <p>
         <label for="email">Email</label>
         <input type="text" id="email" name="email" />
+        {% if errors and 'email' in errors.keys() %}
+          <span class="error">{{ errors['email'] }} </span>
+        {% endif %}
       </p>
       <p>
         <label for="phone">Phone Number</label>
         <input type="text" id="phone" name="phone" />
+        {% if errors and 'phone' in errors.keys() %}
+          <span class="error">{{ errors['phone'] }} </span>
+        {% endif %}
       </p>
       <p>
         <label for="image">Select an image on your computer</label>
         <input type="file" id="image" name="image" />
+        {% if errors and 'image' in errors.keys() %}
+          <span class="error">{{ errors['image'] }} </span>
+        {% endif %}
       </p>
       <p>
         <input type="checkbox" id="tnc" name="tnc" />
         <label for="tnc">I am 18 or older and have read and agree to the<br>
           <a href="#">terms and conditions</a> for my photo submission.</label>
+        {% if errors and 'tnc' in errors.keys() %}
+          <span class="error">{{ errors['tnc'] }} </span>
+        {% endif %}
       </p>
     </form>
       <p>
-        <input type="submit" id="submit" name="submit" value="SUBMIT NOW" />
+        <input type="submit" id="submit_form" name="submit_form" value="SUBMIT NOW" />
       </p>
       <p><a href="#">Privacy Policy</a></p>
       <hr />
-      {% for k in errors.keys() %}
-        <p>{{ errors[k].msg }}</p>
-      {% endfor %}
   </body>
 </html>
