@@ -3,26 +3,31 @@ from flask import Flask
 from flask import render_template
 from flask import url_for
 from flask import request
+from flask import session
 from decode_signed_request import parse_signed_request
 
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
 def root():
-    if request.method == 'POST' and request.form.get('submit', ''):
-        if liked:
-            return render_template('form.html')
-        if not liked:
-            return render_template('root.html', data=dict(liked=liked, first_visit=False))
     signed_request = request.form.get('signed_request', '')
     if signed_request:
-        signed_request = parse_signed_request(signed_request)
-        liked = signed_request['page']['liked']
+        decoded_request = parse_signed_request(signed_request)
+        likes = decoded_request['page']['liked']
     else:
-        liked = False
-    
-    return render_template('root.html', data=dict(liked=liked, first_visit=True))
+        likes = False
+    session['likes'] = likes
+    return render_template('root.html')
 
+@app.route('/enter', methods=['GET', 'POST'])
+def enter():
+    likes = session.get('likes', None)
+    if likes:
+        return "You like this page"
+    else:
+        return "You are not a Fan"
+
+app.secret_key = 'seecreet'
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
