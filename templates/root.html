@@ -35,6 +35,9 @@
         e.preventDefault();
         $("#lean_overlay").modal();
       });
+      $("#close-me").click(function(){
+        self.close();
+      });
     </script>
     <div id="lean_overlay">
       <p class="overlay-header">Haven't liked us yet?</p>
@@ -42,6 +45,7 @@
         click the 'Like' button up there in the top right corner of the page. Click it now and take the first step towards
         your stardom.
       </p>
+      <p style="text-align:center;"><a href="" id="#close-me">Close</a></p>
     </div>
     {% endif %}
 
