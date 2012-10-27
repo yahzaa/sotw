@@ -31,12 +31,14 @@
     
     {% if not data['likes'] %}
     <script>
-      $("#submit-btn").click(function(e){
-        e.preventDefault();
-        $("#lean_overlay").modal();
-      });
-      $("#close-me").click(function(){
-        self.close();
+      $(document).ready(function(){
+        $("#submit-btn").click(function(e){
+          e.preventDefault();
+          $("#lean_overlay").modal();
+        });
+        $("#close-me").click(function(){
+          self.close();
+        });
       });
     </script>
     <div id="lean_overlay">
