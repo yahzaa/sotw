@@ -31,10 +31,9 @@ import formencode
 from formencode import validators 
 
 class RegistrationSchema(formencode.Schema):
-    first_name = validators.String(not_empty=True)
-    last_name = validators.String()
+    name = validators.String(not_empty=True)
     email = validators.Email(resolve_domain=True, not_empty=True)
-    location = validators.String(not_empty=True)
-    phone = validators.Int(not_empty=True)
+    desc = validators.String(not_empty=True)
+    mobile = validators.Int(not_empty=True)
     image = validators.FieldStorageUploadConverter()
     tnc = validators.StringBool(if_missing=False, not_empty=True)

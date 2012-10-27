@@ -33,11 +33,10 @@ db = SQLAlchemy(app)
 #user model
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    first_name = db.Column(db.String(80))
-    last_name = db.Column(db.String(80))
+    name = db.Column(db.String(80))
     email = db.Column(db.String(120), unique=True)
-    location = db.Column(db.String(80))
-    phone = db.Column(db.Integer, unique=True)
+    mobile = db.Column(db.Integer, unique=True)
+    desc = db.Column(db.String())
     image = db.Column(db.String(200), unique=True)
 
 # uploads
@@ -68,11 +67,10 @@ def enter():
             #validate form data
             schema = RegistrationSchema()
             appstruct = dict(
-                first_name = request.form.get('first_name', ''),
-                last_name = request.form.get('last_name', ''),
+                name = request.form.get('name', ''),
                 email = request.form.get('email', ''),
-                phone = request.form.get('phone', ''),
-                location = request.form.get('location', ''),
+                mobile = request.form.get('mobile', ''),
+                desc = request.form.get('desc', ''),
                 tnc = request.form.get('tnc', ''),
                 image = request.form.get('image', ''),
                 )
@@ -89,11 +87,10 @@ def enter():
             except UploadNotAllowed:
                 return "The upload was not allowed"
             user = User(
-                first_name = cstruct['first_name'],
-                last_name = cstruct['last_name'],
+                name = cstruct['name'],
                 email = cstruct['email'],
-                phone = cstruct['phone'],
-                location = cstruct['location'],
+                mobile = cstruct['mobile'],
+                desc = cstruct['desc'],
                 image = filename,
                 )
             db.session.add(user)

@@ -4,11 +4,13 @@
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/static/style.css" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <script src="/static/jquery.simplemodal.1.4.3.min.js"></script>
   </head>
   <body style="font-size:14px;">
     <form action="" method="post" enctype="multipart/form-data">
       <p>
-        <label for="first_name">Name</label>
+        <label for="name">Name</label>
         <input type="text" id="first_name" name="first_name" style="margin-left:62px;"/>
         {% if errors and 'first_name' in errors.keys() %}
           <span class="error">{{ errors['first_name'] }} </span>
@@ -22,8 +24,8 @@
         {% endif %}
       </p>
       <p>
-        <label for="phone">Mobile Number</label>
-        <input type="text" id="phone" name="phone" />
+        <label for="mobile">Mobile Number</label>
+        <input type="text" id="mobile" name="mobile" />
         {% if errors and 'phone' in errors.keys() %}
           <span class="error">{{ errors['phone'] }} </span>
         {% endif %}
@@ -45,7 +47,7 @@
       <p>
         <input type="checkbox" id="tnc" name="tnc" />
         <label for="tnc">I am 18 or older and have read and agree to the<br>
-          <a href="#">terms and conditions</a> for my photo submission.</label>
+          <a href="#tnc">terms and conditions</a> for my photo submission.</label>
         {% if errors and 'tnc' in errors.keys() %}
           <span class="error">Please Accept term and conditions</span>
         {% endif %}
@@ -56,5 +58,45 @@
     </form>
       <p><a href="#">Privacy Policy</a></p>
       
+      <script>
+        $("#tnc").click(function(e){
+          e.preventDefault();
+          $("#tnc_overlay").modal();
+        });
+      </script>
+      <div id="tnc_overlay">
+        <p class="overlay-header">Terms and Conditions</p>
+        <p class="overlay-text">
+          TERMS & CONDITIONS
+These Terms & Conditions apply to the Paytm “Star of the Week” photo album on Facebook which is operated on behalf ofPaytm.com.
+Please read these Terms & Conditions carefully before uploading any photographs of you (each, a "Photo") to the “Star of the Week” photo album. By using the “Star of the Week” photo album, or clicking on "Let’s go," you agree to be bound by these Terms & Conditions.
+PHOTO SUBMISSIONS:
+Photos, once submitted, may be posted to the “Star of the Week” photo album, and, if selected by Paytm as a “Star of the Week” photo, may also be posted on the Paytm page on Facebook, on the Paytm page on Twitter or on Paytm.com. Although it has no obligation to do so, Paytm reserves the right to post, not post, remove, edit, or alter any photos at any time without notice, at it shall determine in its sole discretion.
+You must be at least 18 years of age. By submitting a photo, you represent and warrant that you are the sole individual pictured in the photo, that you took the photo or that you own all rights in and to the photo, that no third party material is included in the photo, and Paytm's use of the photo as provided herein will not violate or infringe upon the rights of any third party.
+Photos must:
+•                      Be 5 MB or less.
+•                      Be in .jpeg or .gif format.
+•                      Have been taken by you (or you must own all rights to the Photo).
+•                      Be original.
+Photos must NOT:
+•                      Have been previously submitted to any contest, sweepstakes, or promotion of any kind.
+•                      Have been copied, in whole or in part, from any other work.
+•                      Contain material that, in the sole discretion of Paytm disparages any person or disparages Paytm, any of its affiliates or franchisees, any of its competitors, or any of their respective products or services.
+•                      Violates or infringes upon the intellectual property or other rights of any third party.
+•                      Includes any third party trademarks, logos, or brand names (although your Photo may include Paytm’s trademarks and logos, if they are used in a proper manner).
+•                      Appears to intentionally duplicate any other submitted photos.
+•                      Is hateful, tortuous, defamatory, slanderous, or libelous.
+•                      Promotes bigotry, racism, sexism, hatred, or harm against any group or individual or promotes discrimination based on race, sex, religion, nationality, disability, sexual orientation, or age.
+•                      Contains any personal information, including, without limitation, name, address, e-mail address, phone number, Twitter handle or FB identity.
+•                      Uses the names, likenesses, voices, or other indicia identifying any other person, living or dead.
+•                      Promotes alcohol, illegal drugs, tobacco, or firearms/weapons (or the use of any of the foregoing).
+•                      Promotes any activities that may appear to be unsafe, dangerous, or unlawful.
+•                      Is unlawful.
+•                      Contains any nudity or any sexually explicit, lewd, offensive, disparaging, or other inappropriate content.
+•                      Communicates messages or images inconsistent with the positive images and good will with which Paytm wishes to associate.
+ 
+For any queries or concerns write to us at care@paytm.com.
+        </p>
+      </div>
   </body>
 </html>
