@@ -35,5 +35,4 @@ class RegistrationSchema(formencode.Schema):
     email = validators.Email(resolve_domain=True, not_empty=True)
     desc = validators.String(not_empty=True)
     mobile = validators.Int(not_empty=True)
-    image = validators.FieldStorageUploadConverter()
     tnc = validators.StringBool(if_missing=False, not_empty=True)

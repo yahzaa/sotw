@@ -51,7 +51,7 @@ def root():
         decoded_request = parse_signed_request(signed_request)
         likes = decoded_request['page']['liked']
     else:
-        likes = False # should be False doing it for local dev
+        likes = True # should be False doing it for local dev
     session['likes'] = likes
     css_url = url_for('static', filename='style.css')
     bg_url = url_for('static', filename='bg.gif')
@@ -73,7 +73,6 @@ def enter():
                 mobile = request.form.get('mobile', ''),
                 desc = request.form.get('desc', ''),
                 tnc = request.form.get('tnc', ''),
-                image = request.form.get('image', ''),
                 )
             try:
                 cstruct = schema.to_python(appstruct)
@@ -95,10 +94,7 @@ def enter():
                 image = filename,
                 )
             db.session.add(user)
-            try:
-                db.session.commit()
-            except:
-                return "AN error occurred while saving data"
+            db.session.commit()
             return "Success, go back to whatever the hell you were doing."
     else:
         return "You are not a Fan!"
