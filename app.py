@@ -21,7 +21,8 @@ from flaskext.uploads import (
     )
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
-
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy.exc import OperationalError
 
 app = Flask(__name__)
 app.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
@@ -51,7 +52,7 @@ def root():
         decoded_request = parse_signed_request(signed_request)
         likes = decoded_request['page']['liked']
     else:
-        likes = False # should be False doing it for local dev
+        likes = True # should be False doing it for local dev
     session['likes'] = likes
     css_url = url_for('static', filename='style.css')
     bg_url = url_for('static', filename='bg.gif')
@@ -85,7 +86,8 @@ def enter():
             try:
                 filename = photos.save(file)
             except UploadNotAllowed:
-                return "The upload was not allowed"
+                e = dict(image="Please select an image file")
+                return render_template('form.html', errors=e)
             user = User(
                 name = cstruct['name'],
                 email = cstruct['email'],
@@ -94,8 +96,15 @@ def enter():
                 image = filename,
                 )
             db.session.add(user)
-            db.session.commit()
-            return "Success, go back to whatever the hell you were doing."
+            try:
+                db.session.commit()
+            except OperationalError:
+                e = dict(db='oops, something went wrong, please try again')
+                return render_template('form.html', errors=e)
+            except IntegrityError:
+                e = dict(db='Someone with this email has already registered')
+                return render_template('form.html', errors=e)
+            return render_template('form.html', errors=dict(success=True))
     else:
         return "You are not a Fan!"
 

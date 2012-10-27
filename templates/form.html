@@ -122,5 +122,35 @@
           <p class="overlay-text"><a href="" class="close-me">Close</a></p>
         </p>
       </div>
+      {% if 'db' in errors.keys() %}
+        <script>
+          $(window).load(function(){
+            $(".error_overlay").modal();
+          });
+          $(".close-me").click(function(){
+            this.close();
+          });
+        </script>
+        <div class="error_overlay">
+          <p class="overlay-header">Something went wrong!</p>
+          <p class="overlay-text">{{ errors['db'] }}</p>
+          <p class="close-me"><a href="">Close</a></p>
+        </div>
+      {% endif %}
+      {% if 'success' in errors.keys() %}
+        <script>
+          $(window).load(function(){
+            $(".success_overlay").modal();
+          });
+          $(".close-me").click(function(){
+            this.close();
+          });
+        </script>
+        <div class="success_overlay">
+          <p class="overlay-header">Thanks!</p>
+          <p class="overlay-text">Thanks for submitting your photo, we will let you know if you are the chosen Paytm 'Star of The Week'</p>
+          <p class="close-me"><a href="">Close</a></p>
+        </div>
+      {% endif %}
   </body>
 </html>

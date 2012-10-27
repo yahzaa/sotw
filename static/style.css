@@ -152,3 +152,46 @@ textarea {
     background-color: blue;
     color: #fff;
 }
+
+.error_overlay {
+    top:0;
+    left:0;
+    display: none;
+    z-index: 10000;
+    background-color: #fff;
+    width: auto;
+    border: 1px solid blue;
+    -moz-box-shadow: 0 0 10px 5px blue;
+    -webkit-box-shadow: 0 0 10px blue;
+    position: relative;
+}
+
+.success_overlay {
+    top:0;
+    left:0;
+    display: none;
+    z-index: 10000;
+    background-color: #fff;
+    width: auto;
+    border: 1px solid blue;
+    -moz-box-shadow: 0 0 10px 5px blue;
+    -webkit-box-shadow: 0 0 10px blue;
+    position: relative;
+}
+
+.error_overlay .overlay-text {
+    text-align: center;
+}
+.error_overlay .overlay-header {
+    text-align: center;
+}
+
+.success_overlay .overlay-text {
+    text-align: center;
+}
+.success_overlay .overlay-header {
+    text-align: center;
+}
+.close-me {
+    text-align: center;
+}
