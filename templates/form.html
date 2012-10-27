@@ -47,7 +47,7 @@
       <p>
         <input type="checkbox" id="tnc" name="tnc" />
         <label for="tnc">I am 18 or older and have read and agree to the<br>
-          <a href="#tnc" id="tnc">terms and conditions</a> for my photo submission.</label>
+          <a href="" class="tnc">terms and conditions</a> for my photo submission.</label>
         {% if errors and 'tnc' in errors.keys() %}
           <span class="error">Please Accept term and conditions</span>
         {% endif %}
@@ -59,41 +59,64 @@
       <p><a href="#">Privacy Policy</a></p>
       
       <script>
-        $("#tnc").click(function(e){
+        $(".tnc").click(function(e){
           $("#tnc_overlay").modal();
+          e.preventDefault();
+        });
+        $(".close-me").click(function(){
+          this.close();
         });
       </script>
       <div id="tnc_overlay">
         <p class="overlay-header">Terms and Conditions</p>
         <p class="overlay-text">
-          These Terms & Conditions apply to the Paytm “Star of the Week” photo album on Facebook which is operated on behalf ofPaytm.com.
-          Please read these Terms & Conditions carefully before uploading any photographs of you (each, a "Photo") to the “Star of the Week” photo album. By using the “Star of the Week” photo album, or clicking on "Let’s go," you agree to be bound by these Terms & Conditions.
-          PHOTO SUBMISSIONS:
-          Photos, once submitted, may be posted to the “Star of the Week” photo album, and, if selected by Paytm as a “Star of the Week” photo, may also be posted on the Paytm page on Facebook, on the Paytm page on Twitter or on Paytm.com. Although it has no obligation to do so, Paytm reserves the right to post, not post, remove, edit, or alter any photos at any time without notice, at it shall determine in its sole discretion.
-          You must be at least 18 years of age. By submitting a photo, you represent and warrant that you are the sole individual pictured in the photo, that you took the photo or that you own all rights in and to the photo, that no third party material is included in the photo, and Paytm's use of the photo as provided herein will not violate or infringe upon the rights of any third party.
-          Photos must:
-•                      Be 5 MB or less.
-•                      Be in .jpeg or .gif format.
-•                      Have been taken by you (or you must own all rights to the Photo).
-•                      Be original.
-Photos must NOT:
-•                      Have been previously submitted to any contest, sweepstakes, or promotion of any kind.
-•                      Have been copied, in whole or in part, from any other work.
-•                      Contain material that, in the sole discretion of Paytm disparages any person or disparages Paytm, any of its affiliates or franchisees, any of its competitors, or any of their respective products or services.
-•                      Violates or infringes upon the intellectual property or other rights of any third party.
-•                      Includes any third party trademarks, logos, or brand names (although your Photo may include Paytm’s trademarks and logos, if they are used in a proper manner).
-•                      Appears to intentionally duplicate any other submitted photos.
-•                      Is hateful, tortuous, defamatory, slanderous, or libelous.
-•                      Promotes bigotry, racism, sexism, hatred, or harm against any group or individual or promotes discrimination based on race, sex, religion, nationality, disability, sexual orientation, or age.
-•                      Contains any personal information, including, without limitation, name, address, e-mail address, phone number, Twitter handle or FB identity.
-•                      Uses the names, likenesses, voices, or other indicia identifying any other person, living or dead.
-•                      Promotes alcohol, illegal drugs, tobacco, or firearms/weapons (or the use of any of the foregoing).
-•                      Promotes any activities that may appear to be unsafe, dangerous, or unlawful.
-•                      Is unlawful.
-•                      Contains any nudity or any sexually explicit, lewd, offensive, disparaging, or other inappropriate content.
-•                      Communicates messages or images inconsistent with the positive images and good will with which Paytm wishes to associate.
- 
-For any queries or concerns write to us at care@paytm.com.
+          These Terms & Conditions apply to the Paytm “Star of the Week” photo album on Facebook which is
+          operated on behalf of Paytm.com.<br>
+          Please read these Terms & Conditions carefully before uploading any photographs of you
+          (each, a "Photo") to the “Star of the Week” photo album. By using the “Star of the Week”
+          photo album, or clicking on "Let’s go," you agree to be bound by these Terms & Conditions.<br>
+          <strong>PHOTO SUBMISSIONS:</strong><br>
+          Photos, once submitted, may be posted to the “Star of the Week” photo album, and, if selected
+          by Paytm as a “Star of the Week” photo, may also be posted on the Paytm page on Facebook,
+          on the Paytm page on Twitter or on Paytm.com. Although it has no obligation to do so,
+          Paytm reserves the right to post, not post, remove, edit, or alter any photos at any time
+          without notice, at it shall determine in its sole discretion.
+          You must be at least 18 years of age. By submitting a photo, you represent and warrant that you
+          are the sole individual pictured in the photo, that you took the photo or that you own all rights
+          in and to the photo, that no third party material is included in the photo, and Paytm's use of the photo
+          as provided herein will not violate or infringe upon the rights of any third party.<br>
+          <strong>Photos must:</strong><br>
+          <ul class="overlay-text">
+            <li>Be 5 MB or less.</li>
+            <li>Be in .jpeg or .gif format.</li>
+            <li>Have been taken by you (or you must own all rights to the Photo).</li>
+            <li>Be original.</li>
+          </ul>
+          <p class="overlay-text" style="font-weight:700;">Photos must NOT:</p>
+          <ul class="overlay-text">
+          <li>Have been previously submitted to any contest, sweepstakes, or promotion of any kind.</li>
+          <li>Have been copied, in whole or in part, from any other work.</li>
+          <li>Contain material that, in the sole discretion of Paytm disparages any person or 
+            disparages Paytm, any of its affiliates or franchisees, any of its competitors, or any
+            of their respective products or services.</li>
+          <li>Violates or infringes upon the intellectual property or other rights of any third party.</li>
+          <li>Includes any third party trademarks, logos, or brand names (although your Photo may 
+            include Paytm’s trademarks and logos, if they are used in a proper manner).</li>
+          <li>Appears to intentionally duplicate any other submitted photos.</li>
+          <li>Is hateful, tortuous, defamatory, slanderous, or libelous.</li>
+          <li>Promotes bigotry, racism, sexism, hatred, or harm against any group or individual or 
+            promotes discrimination based on race, sex, religion, nationality, disability, sexual orientation, or age.</li>
+          <li>Contains any personal information, including, without limitation, name, address, e-mail 
+            address, phone number, Twitter handle or FB identity.</li>
+          <li>Uses the names, likenesses, voices, or other indicia identifying any other person, living or dead.</li>
+          <li>Promotes alcohol, illegal drugs, tobacco, or firearms/weapons (or the use of any of the foregoing).</li>
+          <li>Promotes any activities that may appear to be unsafe, dangerous, or unlawful.</li>
+          <li>Is unlawful.</li>
+          <li>Contains any nudity or any sexually explicit, lewd, offensive, disparaging, or other inappropriate content.</li>
+          <li>Communicates messages or images inconsistent with the positive images and good will with which Paytm wishes to associate.</li>
+          </ul>
+          <p class="overlay-text">For any queries or concerns write to us at care@paytm.com.</p>
+          <p class="overlay-text"><a href="" class="close-me">Close</a></p>
         </p>
       </div>
   </body>

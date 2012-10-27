@@ -114,16 +114,17 @@ textarea {
 }
 
 #tnc_overlay {
+    top:0;
+    left:0;
     display: none;
     z-index: 10000;
     background-color: #fff;
     width: 800px;
     height: 800px;
-    margin-left: auto;
-    margin-right: auto;
     border: 1px solid blue;
     -moz-box-shadow: 0 0 10px 5px blue;
     -webkit-box-shadow: 0 0 10px blue;
+    position: relative;
 }
 
 #tnc_overlay .overlay-header {
@@ -133,11 +134,13 @@ textarea {
     margin-top: 10px;
 }
 
-#lean_overlay .overlay-text {
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-    margin-top: 5px;
+.overlay-text {
+    font-size: 12px;
+    font-weight: 300;
+    text-align: left;
+    margin-top: 0;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 #lean_overlay #fblike {
