@@ -7,3 +7,4 @@ formencode
 pyDNS
 Flask-uploads
 Flask-sqlalchemy
+psycopg2
