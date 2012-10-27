@@ -13,35 +13,38 @@
         <label for="name">Name</label>
         <input type="text" id="name" name="name" style="margin-left:62px;"/>
         {% if errors and 'name' in errors.keys() %}
-          <span class="error">{{ errors['name'] }} </span>
+          <span class="error">Please enter your name </span>
         {% endif %}
       </p>
       <p>
         <label for="email">Email</label>
         <input type="text" id="email" name="email" style="margin-left:67px;"/>
         {% if errors and 'email' in errors.keys() %}
-          <span class="error">{{ errors['email'] }} </span>
+          <span class="error">Please enter a valid email </span>
         {% endif %}
       </p>
       <p>
         <label for="mobile">Mobile Number</label>
         <input type="text" id="mobile" name="mobile" />
         {% if errors and 'mobile' in errors.keys() %}
-          <span class="error">{{ errors['mobile'] }} </span>
+          <br>
+          <span class="error">Please enter a valid mobile number</span>
         {% endif %}
       </p>
       <p>
         <label for="desc">I should be 'Star of The Week' because:</label><br/>
         <textarea rows="4" cols="30" id="desc" name="desc"></textarea>
         {% if errors and 'desc' in errors.keys() %}
-          <span class="error">{{ errors['desc'] }}</span>
+          <br>
+          <span class="error">Please write about yourself</span>
         {% endif %}
       </p>
       <p>
         <label for="image">Select an image on your computer</label><br />
         <input type="file" id="image" name="image" />
         {% if errors and 'image' in errors.keys() %}
-          <span class="error">{{ errors['image'] }} </span>
+          <br>
+          <span class="error">Select an Image </span>
         {% endif %}
       </p>
       <p>
@@ -49,6 +52,7 @@
         <label for="tnc">I am 18 or older and have read and agree to the<br>
           <a href="" class="tnc">terms and conditions</a> for my photo submission.</label>
         {% if errors and 'tnc' in errors.keys() %}
+          <br>
           <span class="error">Please Accept term and conditions</span>
         {% endif %}
       </p>

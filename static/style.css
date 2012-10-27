@@ -144,3 +144,9 @@ textarea {
 #lean_overlay #fblike {
     margin-left: 50px;
 }
+
+.error {
+    border: 1px solid blue;
+    background-color: blue;
+    color: #fff;
+}
