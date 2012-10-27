@@ -52,7 +52,7 @@ def root():
         decoded_request = parse_signed_request(signed_request)
         likes = decoded_request['page']['liked']
     else:
-        likes = True # should be False doing it for local dev
+        likes = False # should be False doing it for local dev
     session['likes'] = likes
     css_url = url_for('static', filename='style.css')
     bg_url = url_for('static', filename='bg.gif')
