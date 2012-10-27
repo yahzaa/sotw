@@ -28,7 +28,7 @@ app.config['UPLOADED_PHOTOS_DEST'] = 'uploads'
 
 # DB Settings
 localdb = 'sqlite:///test.db'
-app.config['SQLALCHEMY_DATABASE_URI'] = os.eniron.get('DATABASE_URL', localdb)
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', localdb)
 db = SQLAlchemy(app)
 
 #user model
