@@ -119,8 +119,7 @@ textarea {
     display: none;
     z-index: 10000;
     background-color: #fff;
-    width: 800px;
-    height: 800px;
+    width: auto;
     border: 1px solid blue;
     -moz-box-shadow: 0 0 10px 5px blue;
     -webkit-box-shadow: 0 0 10px blue;
