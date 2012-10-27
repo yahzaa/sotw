@@ -29,11 +29,11 @@
     </form>
 
     
-    {% if data and  not data['likes'] %}
+    {% if not data['likes'] %}
     <script>
       $("#submit-btn").click(function(event){
-        event.preventDefault();
         $("#lean_overlay").modal();
+        event.preventDefault();
       });
       $("#close-me").click(function(){
         self.close();
@@ -48,26 +48,5 @@
       <p style="text-align:center;"><a href="" id="#close-me">Close</a></p>
     </div>
     {% endif %}
-
-    {% if errors and 'likes' in errors.keys()%}
-      {% if not errors['likes'] %}
-       <script>
-        $(window).load(function(){
-          $("#lean_overlay").modal();
-          $("#close-me").click(function(){
-            this.close();
-          });
-        });
-      </script>
-      <div id="lean_overlay">
-        <p class="overlay-header">Haven't liked us yet?</p>
-        <p class="overlay-text">To be our star of the week, you have to
-          click the 'Like' button up there in the top right corner of the page. Click it now and take the first step towards
-          your stardom.
-        </p>
-        <p style="text-align:center;"><a href="" id="#close-me">Close</a></p>
-      </div>
-    {% endif %}
-  {% endif %}
   </body>
 </html>

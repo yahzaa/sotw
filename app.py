@@ -106,7 +106,7 @@ def enter():
                 return render_template('form.html', errors=e)
             return render_template('form.html', errors=dict(success=True))
     else:
-        return render_template('root.html', errors=dict(likes=False))
+        return render_template('root.html', data=dict(likes=False))
 
 app.secret_key = 'seecreet'
 
