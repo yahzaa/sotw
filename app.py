@@ -36,7 +36,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
     email = db.Column(db.String(120), unique=True)
-    mobile = db.Column(db.Integer, unique=True)
+    mobile = db.Column(db.String(), unique=True)
     desc = db.Column(db.String())
     image = db.Column(db.String(200), unique=True)
 
